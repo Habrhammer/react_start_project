@@ -1,0 +1,34 @@
+.content{
+   grid-area: c;
+   color: #47525E;
+ }
+
+
+.article {
+   padding: 5px 0;
+}
+
+
+ .item {
+   display: flex;
+   align-items: center;
+   padding: 10px;
+   background-color: wheat;
+   
+ }
+
+ .item img{
+    align-self: flex-start;
+    margin-right: 20px;
+    border-radius: 50%;
+    width: 45px;
+    
+ }
+
+ .text {
+    flex: 1 1 100%;
+ }
+
+ .like {
+    cursor: pointer;
+ }
