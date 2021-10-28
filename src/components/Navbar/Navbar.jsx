@@ -6,10 +6,10 @@ function Navbar() {
     <nav className={classes.nav}>
       <ul>
         <li className={classes.item}>
-          <a href="#">Profile</a>
+          <a href="/profile">Profile</a>
         </li>
         <li className={classes.item}>
-          <a href="#">Message</a>
+          <a href="/dialogs">Message</a>
         </li>
         <li className={classes.item}>
           <a href="#">News</a>

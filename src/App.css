@@ -19,3 +19,7 @@ a{
   text-decoration: none;
 }
 
+.content{
+  grid-area: c;
+  color: #47525E;
+}
