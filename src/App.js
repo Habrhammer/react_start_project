@@ -1,17 +1,32 @@
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
-import Profiles from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs"
+import Profile from "./components/Profile/Profile";
+import Dialogs from "./components/Dialogs/Dialogs";
 import "./App.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-function App() {
+function App(props) {
+
   return (
-    <div className="app-wrapper">
-      <Header />
-      <Navbar/>
-      {/* <Profiles/> */}
-      <Dialogs/>
-    </div>
+    <Router>
+      <div className="app-wrapper">
+        <Header />
+        <Navbar />
+
+        <Route
+          path="/dialogs"
+          render={() => {
+            return (<Dialogs appData={props.appData}/>);
+          }}
+        />
+        <Route
+          path="/profile"
+          render={() => {
+            return (<Profile postData = {props.postData} />);
+          }}
+        />
+      </div>
+    </Router>
   );
 }
 

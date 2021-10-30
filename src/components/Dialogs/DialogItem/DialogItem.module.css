@@ -1,0 +1,30 @@
+
+.dialog {
+   padding: 0 25px 0;
+   margin: 10px 0;
+   position: relative;
+   display: flex;
+   align-items: center;
+   font-size: 25px;
+   cursor: pointer;
+   transition: color 0.3s ease 0s;
+   color: #8190A5;
+}
+
+
+
+.dialog:hover{
+   color: #2f343b;
+   
+}
+
+.dialog::before {
+   position: absolute;
+   content: "";
+   left: 0;
+   
+   width: 10px;
+   height: 10px;
+   border-radius: 50%;
+   background-color: #8190A5;
+}
