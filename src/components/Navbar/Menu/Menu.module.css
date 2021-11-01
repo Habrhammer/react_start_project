@@ -1,0 +1,15 @@
+a {
+   color: white;
+   font-size: 25px;
+   font-weight: 500;
+ }
+
+a.active {
+  color: #f0068e;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

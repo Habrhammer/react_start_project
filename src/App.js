@@ -2,16 +2,17 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
+import { Route } from "react-router-dom";
 import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+
 
 function App(props) {
-
+ 
   return (
-    <Router>
+    
       <div className="app-wrapper">
         <Header />
-        <Navbar />
+        <Navbar appData={props.appData} />
 
         <Route
           path="/dialogs"
@@ -22,11 +23,11 @@ function App(props) {
         <Route
           path="/profile"
           render={() => {
-            return (<Profile postData = {props.postData} />);
+            return (<Profile appData = {props.appData} addMessage={props.addMessage} />);
           }}
         />
       </div>
-    </Router>
+  
   );
 }
 

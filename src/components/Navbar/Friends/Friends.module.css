@@ -1,0 +1,33 @@
+.friendList {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   
+}
+
+.friendItem {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   flex: 0 1 33.333%;
+}
+
+.friendItem img {
+   align-self: center;
+   width: 45px;
+   border-radius: 50%;
+}
+
+.friendItem a {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   font-size: 12px;
+}
+
+h3{
+   display: flex;
+   justify-content: center;
+   font-size: 30px;
+   color: white;
+}

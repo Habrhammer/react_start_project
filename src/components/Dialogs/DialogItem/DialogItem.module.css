@@ -28,3 +28,9 @@
    border-radius: 50%;
    background-color: #8190A5;
 }
+
+.dialog>img{
+   width: 50px;
+   border-radius: 50%;
+   margin-right: 10px;
+}

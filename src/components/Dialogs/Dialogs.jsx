@@ -5,18 +5,16 @@ import Message from "./Message/Message.jsx"
 
 function Dialogs(props) {
 
-let dialogsdata = props.appData.dialogs;
-let messagedata = props.appData.messages;
 
   return (
     <div className={classes.dialogs}>
       <div className={classes["dialog-items"]}>
-        {dialogsdata.map((el) => {
-          return <DialogItem name={el.name} id={el.id} key={el.id} />;
+        {props.appData.dialogsData.map((el) => {
+          return <DialogItem name={el.name} id={el.id} avatar={el.avatar} key={el.id} />;
         })}
       </div>
       <div className={classes.messages}>
-        {messagedata.map((el) => {
+        {props.appData.messageData.map((el) => {
           return <Message message={el.message} key={el.id} />;
         })}
 

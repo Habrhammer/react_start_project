@@ -1,28 +1,13 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import Friends from "./Friends/Friends";
+import Menu from "./Menu/Menu";
 import classes from "./Navbar.module.css";
 
-function Navbar() {
+function Navbar(props) {
   return (
     <nav className={classes.nav}>
-      <ul>
-        <li className={classes.item}>
-          <NavLink to="/profile" activeClassName={classes.active}>Home</NavLink>
-        </li>
-        <li className={classes.item}>
-          
-          <NavLink to="/dialogs" activeClassName={classes.active}>Message</NavLink>
-        </li>
-        <li className={classes.item}>
-          <a href="#">News</a>
-        </li>
-        <li className={classes.item}>
-          <a href="#">Music</a>
-        </li>
-        <li className={classes.item}>
-          <a href="#">Settings</a>
-        </li>
-      </ul>
+      <Menu/>
+      <Friends appData={props.appData}/>  
     </nav>
   );
 }
