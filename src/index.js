@@ -1,18 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {
-  addPost,
-  sendMessage,
-  subscribe,
-  updateMessageText,
-  updateNewPostText,
-} from "./state.js";
-
 import "./index.css";
 import App from "./App";
 
 import { BrowserRouter as Router } from "react-router-dom";
-import state from "./state.js";
+import store from "./state.js";
 
 import "./index.css";
 
@@ -20,17 +12,18 @@ function rerenderEntireTree() {
   ReactDOM.render(
     <Router>
       <App
-        appData={state}
-        addPost={addPost}
-        sendMessage={sendMessage}
-        updateMessageText={updateMessageText}
-        updateNewPostText={updateNewPostText}
+        appData={store.state}
+        addPost={store.addPost.bind(store)}
+        sendMessage={store.sendMessage.bind(store)}
+        updateMessageText={store.updateMessageText.bind(store)}
+        updateNewPostText={store.updateNewPostText.bind(store)}
+     
       />
     </Router>,
     document.getElementById("root")
   );
 }
 
-subscribe(rerenderEntireTree);
+store.subscribe(rerenderEntireTree);
 
-rerenderEntireTree(state);
+rerenderEntireTree(store.state);

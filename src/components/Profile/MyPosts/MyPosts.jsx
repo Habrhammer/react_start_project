@@ -3,13 +3,14 @@ import classes from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 function MyPosts(props) {
-  let newPostElement = React.createRef();
   console.log(props);
+  let newPostElement = React.createRef();
   let addPost = () => {
     props.addPost();
   };
 
-  let onPostChange = () => {
+  function onPostChange() {
+    debugger
     let text = newPostElement.current.value;
     props.updateNewPostText(text);
   };
