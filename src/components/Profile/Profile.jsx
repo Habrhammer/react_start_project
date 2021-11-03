@@ -8,7 +8,7 @@ function Profile(props) {
   return (
     <div className={classes.content}>
       <ProfileInfo />
-      <MyPosts appData={props.appData} addMessage={props.addMessage}/>
+      <MyPosts appData={props.appData} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>
     </div>
   );
 }

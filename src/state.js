@@ -1,6 +1,33 @@
-import {rerenderEntireTree} from "./render.js"
+// import { rerenderEntireTree } from "./render.js";
+let rerenderEntireTree = () => {
+  console.log("State changed!");
+};
 
 let state = {
+  profilePage: {
+    posts: [
+      {
+        id: 1,
+        message:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore animi hic laboriosam earum sunt quibusdam eligendi vel mollitia, officia laudantium sed in maiores esse? Quod, minima reiciendis? Fugiat, voluptatum praesentium.",
+        likes: 1,
+      },
+      {
+        id: 2,
+        message:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum animi porro praesentium pariatur illum consequuntur, in molestiae laborum iure atque accusantium debitis amet numquam voluptates ea libero ex vel ratione sed consectetur quod? Culpa soluta aut est ex placeat nisi, reprehenderit sequi quis doloribus asperiores. Ipsam pariatur incidunt ratione repudiandae.",
+        likes: 3,
+      },
+      {
+        id: 3,
+        message:
+          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio sed vitae magni eum molestiae ratione!",
+        likes: 5,
+      },
+    ],
+    newPostText: "bla bla bla...",
+  },
+  dialogsPage: {},
   dialogsData: [
     {
       id: 1,
@@ -72,26 +99,7 @@ let state = {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam ullam voluptatibus dolorum unde ex tenetur nobis ducimus commodi nemo amet. Eius velit hic sequi nihil placeat perferendis quasi consectetur et repellendus corporis officia modi ratione, officiis dolorum porro nobis atque quam, ab, ad distinctio saepe tenetur earum quis? Perferendis, odio!",
     },
   ],
-  postData: [
-    {
-      id: 1,
-      message:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore animi hic laboriosam earum sunt quibusdam eligendi vel mollitia, officia laudantium sed in maiores esse? Quod, minima reiciendis? Fugiat, voluptatum praesentium.",
-      likes: 1,
-    },
-    {
-      id: 2,
-      message:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum animi porro praesentium pariatur illum consequuntur, in molestiae laborum iure atque accusantium debitis amet numquam voluptates ea libero ex vel ratione sed consectetur quod? Culpa soluta aut est ex placeat nisi, reprehenderit sequi quis doloribus asperiores. Ipsam pariatur incidunt ratione repudiandae.",
-      likes: 3,
-    },
-    {
-      id: 3,
-      message:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio sed vitae magni eum molestiae ratione!",
-      likes: 5,
-    },
-  ],
+  newMessageText: "New message...",
   navbarData: {
     friends: [
       {
@@ -140,15 +148,39 @@ let state = {
   },
 };
 
-export function addMessage(message){
-
-   let newMessage = {
-      id: 5,
-      message: message
-   }
-   state.postData.push(newMessage);
-   rerenderEntireTree();
+export function addPost() {
+  let newPost = {
+    id: Date.now(),
+    message: state.profilePage.newPostText,
+    likesCount: 0,
+  };
+  state.profilePage.posts.push(newPost);
+  state.profilePage.newPostText = "";
+  rerenderEntireTree(state);
 }
 
+export function updateNewPostText(newText) {
+  state.profilePage.newPostText = newText;
+  rerenderEntireTree(state);
+}
+
+export function sendMessage() {
+  let newMessageObj = {
+    id: Date.now(),
+    message: state.newMessageText,
+  };
+  state.messageData.push(newMessageObj);
+  state.newMessageText = "";
+  rerenderEntireTree(state);
+}
+
+export function updateMessageText(newText) {
+  state.newMessageText = newText;
+  rerenderEntireTree(state);
+}
+
+export function subscribe(observer) {
+  rerenderEntireTree = observer;
+}
 
 export default state;

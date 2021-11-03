@@ -1,14 +1,36 @@
+import React from "react";
+import ReactDOM from "react-dom";
+import {
+  addPost,
+  sendMessage,
+  subscribe,
+  updateMessageText,
+  updateNewPostText,
+} from "./state.js";
 
-import { rerenderEntireTree } from './render.js';
-import './index.css';
+import "./index.css";
+import App from "./App";
 
-import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router } from "react-router-dom";
+import state from "./state.js";
 
+import "./index.css";
 
+function rerenderEntireTree() {
+  ReactDOM.render(
+    <Router>
+      <App
+        appData={state}
+        addPost={addPost}
+        sendMessage={sendMessage}
+        updateMessageText={updateMessageText}
+        updateNewPostText={updateNewPostText}
+      />
+    </Router>,
+    document.getElementById("root")
+  );
+}
 
-rerenderEntireTree();
+subscribe(rerenderEntireTree);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+rerenderEntireTree(state);

@@ -5,29 +5,37 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import { Route } from "react-router-dom";
 import "./App.css";
 
-
 function App(props) {
- 
   return (
-    
-      <div className="app-wrapper">
-        <Header />
-        <Navbar appData={props.appData} />
+    <div className="app-wrapper">
+      <Header />
+      <Navbar appData={props.appData} />
 
-        <Route
-          path="/dialogs"
-          render={() => {
-            return (<Dialogs appData={props.appData}/>);
-          }}
-        />
-        <Route
-          path="/profile"
-          render={() => {
-            return (<Profile appData = {props.appData} addMessage={props.addMessage} />);
-          }}
-        />
-      </div>
-  
+      <Route
+        path="/dialogs"
+        render={() => {
+          return (
+            <Dialogs
+              appData={props.appData}
+              sendMessage={props.sendMessage}
+              updateMessageText={props.updateMessageText}
+            />
+          );
+        }}
+      />
+      <Route
+        path="/profile"
+        render={() => {
+          return (
+            <Profile
+              appData={props.appData}
+              addPost={props.addPost}
+              updateNewPostText={props.updateNewPostText}
+            />
+          );
+        }}
+      />
+    </div>
   );
 }
 
