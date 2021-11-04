@@ -14,25 +14,13 @@ function App(props) {
       <Route
         path="/dialogs"
         render={() => {
-          return (
-            <Dialogs
-              appData={props.appData}
-              sendMessage={props.sendMessage}
-              updateMessageText={props.updateMessageText}
-            />
-          );
+          return <Dialogs appData={props.appData} dispatch={props.dispatch} />;
         }}
       />
       <Route
         path="/profile"
         render={() => {
-          return (
-            <Profile
-              appData={props.appData}
-              addPost={props.addPost}
-              updateNewPostText={props.updateNewPostText}
-            />
-          );
+          return <Profile appData={props.appData} dispatch={props.dispatch} />;
         }}
       />
     </div>

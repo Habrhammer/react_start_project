@@ -12,12 +12,8 @@ function rerenderEntireTree() {
   ReactDOM.render(
     <Router>
       <App
-        appData={store.state}
-        addPost={store.addPost.bind(store)}
-        sendMessage={store.sendMessage.bind(store)}
-        updateMessageText={store.updateMessageText.bind(store)}
-        updateNewPostText={store.updateNewPostText.bind(store)}
-     
+        appData={store.getState()}
+        dispatch={store.dispatch.bind(store)} 
       />
     </Router>,
     document.getElementById("root")
@@ -26,4 +22,4 @@ function rerenderEntireTree() {
 
 store.subscribe(rerenderEntireTree);
 
-rerenderEntireTree(store.state);
+rerenderEntireTree(store.getState());
