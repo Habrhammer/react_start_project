@@ -1,7 +1,5 @@
-const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
-const SEND_MESSAGE = "SEND-MESSAGE";
-const UPDATE_MESSAGE_TEXT = "UPDATE-MESSAGE-TEXT";
+import { dialogsReducer } from "./redux/dialogs-reducer";
+import { profileReducer } from "./redux/profile-reducer";
 
 let store = {
   _state: {
@@ -158,57 +156,11 @@ let store = {
     this._callSubscriber = observer;
   },
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      let newPost = {
-        id: Date.now(),
-        message: this._state.profilePage.newPostText,
-        likesCount: 0,
-      };
-      this._state.profilePage.posts.push(newPost);
-      this._state.profilePage.newPostText = "";
-      this._callSubscriber(this._state);
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this._state.profilePage.newPostText = action.newText;
-      this._callSubscriber(this._state);
-    } else if (action.type === SEND_MESSAGE) {
-      let newMessageObj = {
-        id: Date.now(),
-        message: this._state.dialogsPage.newMessageText,
-      };
-      this._state.dialogsPage.messages.push(newMessageObj);
-      this._state.dialogsPage.newMessageText = "";
-      this._callSubscriber(this._state);
-    } else if (action.type === UPDATE_MESSAGE_TEXT) {
-      this._state.dialogsPage.newMessageText = action.newText;
-      this._callSubscriber(this._state);
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+    this._callSubscriber(this._state);
   },
 };
-
-export function addPostActionCreator() {
-  return {
-    type: ADD_POST,
-  };
-}
-export function updateNewPostTextActionCreator(text) {
-  return {
-    type: UPDATE_NEW_POST_TEXT,
-    newText: text,
-  };
-}
-
-
-export function sendMessageCreator() {
-  return {
-    type: SEND_MESSAGE,
-  };
-}
-export function updateMessageTextCreator(text) {
-  return {
-    type: UPDATE_MESSAGE_TEXT,
-    newText: text,
-  };
-}
 
 
 
