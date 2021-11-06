@@ -9,7 +9,7 @@ function App(props) {
   return (
     <div className="app-wrapper">
       <Header />
-      <Navbar appData={props.appData} />
+      <Navbar appData={props.appData} dispatch={props.dispatch} />
 
       <Route
         path="/dialogs"

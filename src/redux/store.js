@@ -1,5 +1,5 @@
-import { dialogsReducer } from "./redux/dialogs-reducer";
-import { profileReducer } from "./redux/profile-reducer";
+import { dialogsReducer } from "./dialogs-reducer";
+import { profileReducer } from "./profile-reducer";
 
 let store = {
   _state: {
@@ -161,9 +161,5 @@ let store = {
     this._callSubscriber(this._state);
   },
 };
-
-
-
-
 
 export default store;
