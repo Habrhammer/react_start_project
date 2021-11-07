@@ -45,7 +45,7 @@ let initialState = {
    ],
  }
 
-export function navbarReducer(state = initialState,action){
+export function sidebarReducer(state = initialState,action){
    
    return state;
 }

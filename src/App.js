@@ -1,26 +1,28 @@
 import Header from "./components/Header/Header";
-import Navbar from "./components/Navbar/Navbar";
+import Sidebar from "./components/Sidebar/Sidebar";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
+
 import { Route } from "react-router-dom";
 import "./App.css";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 function App(props) {
+  console.log(props);
   return (
     <div className="app-wrapper">
       <Header />
-      <Navbar appData={props.appData} dispatch={props.dispatch} />
+      <Sidebar store={props.store} dispatch={props.dispatch} />
 
       <Route
         path="/dialogs"
         render={() => {
-          return <Dialogs appData={props.appData} dispatch={props.dispatch} />;
+          return <DialogsContainer store={props.store} dispatch={props.dispatch} />;
         }}
       />
       <Route
         path="/profile"
         render={() => {
-          return <Profile appData={props.appData} dispatch={props.dispatch} />;
+          return <Profile store={props.store} dispatch={props.dispatch} />;
         }}
       />
     </div>

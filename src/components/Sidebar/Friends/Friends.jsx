@@ -3,11 +3,14 @@ import { NavLink } from "react-router-dom";
 import classes from "./Friends.module.css";
 
 function Friends(props){
+
+let state = props.store.getState()
+
    return (
       <div>
          <h3>Friends</h3>
          <ul className={classes.friendList}>
-         {props.appData.sidebar.friends.map(el=>{
+         {state.sidebar.friends.map(el=>{
            return ( <li className={classes.friendItem} key={el.id}>
              <NavLink to="/profile" > <img src={el.avatar} alt=""/>{el.name} </NavLink>
            </li>)

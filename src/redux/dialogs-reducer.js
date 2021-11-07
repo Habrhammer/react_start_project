@@ -74,8 +74,7 @@ let initialState = {
     },
   ],
   newMessageText: "New message...",
-}
-
+};
 
 export function dialogsReducer(state = initialState, action) {
   switch (action.type) {
@@ -95,15 +94,14 @@ export function dialogsReducer(state = initialState, action) {
   }
 }
 
-
 export function sendMessageCreator() {
-   return {
-     type: SEND_MESSAGE,
-   };
- }
- export function updateMessageTextCreator(text) {
-   return {
-     type: UPDATE_MESSAGE_TEXT,
-     newText: text,
-   };
- }
+  return {
+    type: SEND_MESSAGE,
+  };
+}
+export function updateMessageTextCreator(text) {
+  return {
+    type: UPDATE_MESSAGE_TEXT,
+    newText: text,
+  };
+}

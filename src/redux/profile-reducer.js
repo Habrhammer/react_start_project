@@ -23,9 +23,9 @@ let initialState = {
     },
   ],
   newPostText: "bla bla bla...",
-}
+};
 
-export function profileReducer(state=initialState, action) {
+export function profileReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_POST:
       let newPost = {
@@ -44,15 +44,14 @@ export function profileReducer(state=initialState, action) {
   }
 }
 
-
 export function addPostActionCreator() {
-   return {
-     type: ADD_POST,
-   };
- }
- export function updateNewPostTextActionCreator(text) {
-   return {
-     type: UPDATE_NEW_POST_TEXT,
-     newText: text,
-   };
- }
+  return {
+    type: ADD_POST,
+  };
+}
+export function updateNewPostTextActionCreator(text) {
+  return {
+    type: UPDATE_NEW_POST_TEXT,
+    newText: text,
+  };
+}

@@ -1,14 +1,15 @@
 import React from "react";
 import Friends from "./Friends/Friends";
 import Menu from "./Menu/Menu";
-import classes from "./Navbar.module.css";
+import classes from "./Sidebar.module.css";
 
-function Navbar(props) {
+function Sidebar(props) {
+ 
   return (
     <nav className={classes.nav}>
       <Menu/>
-      <Friends appData={props.appData}/>  
+      <Friends store={props.store}/>  
     </nav>
   );
 }
-export default Navbar;
+export default Sidebar;
