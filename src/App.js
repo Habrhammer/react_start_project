@@ -6,23 +6,22 @@ import { Route } from "react-router-dom";
 import "./App.css";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
-function App(props) {
-  console.log(props);
+function App() {
   return (
     <div className="app-wrapper">
       <Header />
-      <Sidebar store={props.store} dispatch={props.dispatch} />
+      <Sidebar />
 
       <Route
         path="/dialogs"
         render={() => {
-          return <DialogsContainer store={props.store} dispatch={props.dispatch} />;
+          return <DialogsContainer />;
         }}
       />
       <Route
         path="/profile"
         render={() => {
-          return <Profile store={props.store} dispatch={props.dispatch} />;
+          return <Profile />;
         }}
       />
     </div>

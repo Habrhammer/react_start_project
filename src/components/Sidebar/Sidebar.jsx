@@ -8,7 +8,7 @@ function Sidebar(props) {
   return (
     <nav className={classes.nav}>
       <Menu/>
-      <Friends store={props.store}/>  
+      {/* <Friends store={props.store}/>   */}
     </nav>
   );
 }

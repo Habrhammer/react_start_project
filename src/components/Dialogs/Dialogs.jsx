@@ -3,25 +3,20 @@ import classes from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem.jsx";
 import Message from "./Message/Message.jsx";
 
-
 function Dialogs(props) {
- 
   let newMessageElement = React.createRef();
-
+  let state = props.dialogsPage;
 
   function addMessage() {
-   
-    props.addMessage()
+    props.sendMessage();
   }
   function onMessageChange() {
-   
-    props.onMessageChange(newMessageElement.current.value)
-   
+    props.updateNewMessageBody(newMessageElement.current.value);
   }
   return (
     <div className={classes.dialogs}>
       <div className={classes["dialog-items"]}>
-        {props.state.dialogs.map((el) => {
+        {state.dialogs.map((el) => {
           return (
             <DialogItem
               name={el.name}
@@ -33,7 +28,7 @@ function Dialogs(props) {
         })}
       </div>
       <div className={classes.messages}>
-        {props.state.messages.map((el) => {
+        {state.messages.map((el) => {
           return <Message message={el.message} key={el.id} />;
         })}
         <div>
@@ -42,11 +37,10 @@ function Dialogs(props) {
             cols="100"
             rows="5"
             ref={newMessageElement}
-            value={props.state.newMessageText}
+            value={state.newMessageText}
           ></textarea>
           <button onClick={addMessage}>Отправить</button>
         </div>
-    
       </div>
     </div>
   );

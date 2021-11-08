@@ -46,6 +46,5 @@ let initialState = {
  }
 
 export function sidebarReducer(state = initialState,action){
-   
    return state;
 }
