@@ -1,31 +1,28 @@
 import React from "react";
-import {sendMessageCreator,updateMessageTextCreator} from "../../redux/dialogs-reducer";
+import {
+  sendMessageCreator,
+  updateMessageTextCreator,
+} from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
 import { connect } from "react-redux";
 
-
-function mapStateToProps(state){
-
+function mapStateToProps(state) {
   return {
-    dialogsPage: state.dialogsPage
-  }
+    dialogsPage: state.dialogsPage,
+  };
 }
 
-function mapDispatchToProps(dispatch){
-
+function mapDispatchToProps(dispatch) {
   return {
-    updateNewMessageBody: (body)=> {
+    updateNewMessageBody: (body) => {
       dispatch(updateMessageTextCreator(body));
-      
     },
     sendMessage: () => {
-      dispatch(sendMessageCreator())
-    }
-  }
+      dispatch(sendMessageCreator());
+    },
+  };
 }
 
-
-const DialogsContainer = connect(mapStateToProps,mapDispatchToProps)(Dialogs);
-
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;
