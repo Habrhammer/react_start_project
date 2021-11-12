@@ -49,3 +49,21 @@
    align-items: center;
 }
 
+.selectedPage {
+   font-weight: bold;
+   background-color: #0b9248;
+}
+
+span {
+   cursor: pointer;
+   display: inline-flex;
+   justify-content: center;
+   align-items: center;
+   margin: 0 10px 10px;
+   padding: 10px;
+   width: 20px;
+   height: 20px;
+   background-color: #13CE66;
+   border-radius: 50%;
+   color: #fff;
+}
