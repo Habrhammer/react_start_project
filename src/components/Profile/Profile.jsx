@@ -5,10 +5,9 @@ import classes from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 function Profile(props) {
-
   return (
     <div className={classes.content}>
-      <ProfileInfo />
+      <ProfileInfo profile={props.profile} />
       <MyPostsContainer/>
     </div>
   );

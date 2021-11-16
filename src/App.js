@@ -5,6 +5,7 @@ import { Route } from "react-router-dom";
 import "./App.css";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 function App() {
   return (
@@ -19,9 +20,9 @@ function App() {
         }}
       />
       <Route
-        path="/profile"
+        path="/profile/:userId"
         render={() => {
-          return <Profile />;
+          return <ProfileContainer />;
         }}
       />
       <Route
