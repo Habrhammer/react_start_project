@@ -6,11 +6,12 @@ import "./App.css";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 function App() {
   return (
     <div className="app-wrapper">
-      <Header />
+      <HeaderContainer />
       <Sidebar />
 
       <Route
@@ -20,7 +21,7 @@ function App() {
         }}
       />
       <Route
-        path="/profile/:userId"
+        path="/profile/:userId?"
         render={() => {
           return <ProfileContainer />;
         }}
