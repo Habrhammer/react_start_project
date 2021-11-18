@@ -24,7 +24,7 @@ let initialState = {
     },
   ],
   newPostText: "bla bla bla...",
-  profile: null
+  profile: null,
 };
 
 export function profileReducer(state = initialState, action) {
@@ -51,8 +51,8 @@ export function profileReducer(state = initialState, action) {
       };
     }
     case SET_USER_PROFILE: {
-      return {...state, profile: action.profile}
-  }
+      return { ...state, profile: action.profile };
+    }
 
     default:
       return state;
@@ -65,11 +65,11 @@ export function addPostActionCreator() {
   };
 }
 
-export function setUserProfile(profile){
+export function setUserProfile(profile) {
   return {
     type: SET_USER_PROFILE,
-    profile
-  }
+    profile,
+  };
 }
 
 export function updateNewPostTextActionCreator(text) {
@@ -78,3 +78,4 @@ export function updateNewPostTextActionCreator(text) {
     newText: text,
   };
 }
+

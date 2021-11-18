@@ -20,11 +20,6 @@ function Users(props) {
               <div className={classes.left_container}>
                 <div>
                   <NavLink to={"/profile/" + u.id}>
-                    {/* <img
-                      src={u.userPhoto ? u.userPhoto : userPhoto}
-                      alt=""
-                      className={classes.userPhoto}
-                    /> */}
                     <img
                       src={u.photos.small != null ? u.photos.small : userPhoto}
                       className={classes.userPhoto}
@@ -34,7 +29,9 @@ function Users(props) {
                 <div>
                   {u.followed ? (
                     <button
+                      disabled={props.isDisabled.some((id) => id === u.id)}
                       onClick={() => {
+                        props.toggleIsDisabled(true, u.id);
                         axios
                           .delete(
                             `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
@@ -42,7 +39,7 @@ function Users(props) {
                               withCredentials: true,
                               headers: {
                                 "API-KEY":
-                                  "c6549b65-1a3d-4837-879f-59ac1d688750",
+                                  "1cd170be-dd79-4dae-bcfd-ad4b8a3bfafd",
                               },
                             }
                           )
@@ -50,6 +47,7 @@ function Users(props) {
                             if (response.data.resultCode == 0) {
                               props.unfollow(u.id);
                             }
+                            props.toggleIsDisabled(false, u.id);
                           });
                       }}
                     >
@@ -57,7 +55,9 @@ function Users(props) {
                     </button>
                   ) : (
                     <button
+                      disabled={props.isDisabled.some((id) => id === u.id)}
                       onClick={() => {
+                        props.toggleIsDisabled(true, u.id);
                         axios
                           .post(
                             `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
@@ -66,15 +66,15 @@ function Users(props) {
                               withCredentials: true,
                               headers: {
                                 "API-KEY":
-                                  "c6549b65-1a3d-4837-879f-59ac1d688750",
+                                  "1cd170be-dd79-4dae-bcfd-ad4b8a3bfafd",
                               },
                             }
                           )
                           .then((response) => {
-                        
                             if (response.data.resultCode == 0) {
                               props.follow(u.id);
                             }
+                            props.toggleIsDisabled(false, u.id);
                           });
                       }}
                     >

@@ -35,7 +35,13 @@
 
 }
 
-.fullName, .right_container{
+.left_container button:disabled {
+   border: 1px solid #7bb696;
+   background-color: #7bb696;
+}
+
+.fullName,
+.right_container {
    font-weight: bold;
 }
 
