@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./ProfileInfo.module.css";
 import screenImage from "./../../../assets/images/screen.jpg";
+import userPhoto from "./../../../assets/images/user.png";
 import Preloader from "../../common/Preloader/Preloader";
 
 function ProfileInfo(props) {
@@ -13,7 +14,7 @@ function ProfileInfo(props) {
         <img className={classes.img} src={screenImage} alt="" />
       </div>
       <div className={classes.avatar}>
-        <img src={props.profile.photos.large} />
+        <img src={props.profile.photos.large !=null ? props.profile.photos.large : userPhoto } />
       </div>
     </div>
   );

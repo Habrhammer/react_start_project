@@ -2,7 +2,8 @@ import React from "react";
 import classes from "./Users.module.css";
 import userPhoto from "./../../assets/images/user.png";
 import { NavLink } from "react-router-dom";
-import * as axios from "axios";
+
+
 
 function Users(props) {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -23,32 +24,15 @@ function Users(props) {
                     <img
                       src={u.photos.small != null ? u.photos.small : userPhoto}
                       className={classes.userPhoto}
-                    />
-                  </NavLink>
+                    /></NavLink>
                 </div>
                 <div>
                   {u.followed ? (
                     <button
                       disabled={props.isDisabled.some((id) => id === u.id)}
                       onClick={() => {
-                        props.toggleIsDisabled(true, u.id);
-                        axios
-                          .delete(
-                            `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
-                            {
-                              withCredentials: true,
-                              headers: {
-                                "API-KEY":
-                                  "1cd170be-dd79-4dae-bcfd-ad4b8a3bfafd",
-                              },
-                            }
-                          )
-                          .then((response) => {
-                            if (response.data.resultCode == 0) {
-                              props.unfollow(u.id);
-                            }
-                            props.toggleIsDisabled(false, u.id);
-                          });
+                     
+                        props.unfollow(u.id)
                       }}
                     >
                       Отписаться
@@ -57,25 +41,8 @@ function Users(props) {
                     <button
                       disabled={props.isDisabled.some((id) => id === u.id)}
                       onClick={() => {
-                        props.toggleIsDisabled(true, u.id);
-                        axios
-                          .post(
-                            `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
-                            {},
-                            {
-                              withCredentials: true,
-                              headers: {
-                                "API-KEY":
-                                  "1cd170be-dd79-4dae-bcfd-ad4b8a3bfafd",
-                              },
-                            }
-                          )
-                          .then((response) => {
-                            if (response.data.resultCode == 0) {
-                              props.follow(u.id);
-                            }
-                            props.toggleIsDisabled(false, u.id);
-                          });
+                    
+                        props.follow(u.id)
                       }}
                     >
                       Подписаться
