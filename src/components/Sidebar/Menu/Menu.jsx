@@ -7,7 +7,7 @@ function Menu(props) {
     <ul className={classes.menu}>
       <li className={classes.item}>
         <NavLink to="/profile" activeClassName={classes.active}>
-          Home
+          Profile
         </NavLink>
       </li>
       <li className={classes.item}>
