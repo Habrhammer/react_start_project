@@ -1,81 +1,48 @@
 import React from "react";
 import classes from "./Users.module.css";
-import userPhoto from "./../../assets/images/user.png";
-import { NavLink } from "react-router-dom";
+import Paginator from "../common/Paginator/Paginator";
+import User from "./User";
 
-
-
-function Users(props) {
-  let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-
+function Users({currentPage, totalUsersCount, pageSize, onPageChanged, users, ...props}) {
+/*   let pagesCount = Math.ceil(totalUsersCount / pageSize);
   let pages = [];
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
-  }
+  } */
   return (
     <div>
-      {props.users.map((u) => {
+
+<Paginator currentPage={currentPage} onPageChanged={onPageChanged}
+                   totalUsersCount={totalUsersCount} pageSize={pageSize}/>
+
+
+
+
+      {users.map((u) => {
         return (
-          <div className={classes.wrapper} key={u.id}>
-            <div className={classes.content}>
-              <div className={classes.left_container}>
-                <div>
-                  <NavLink to={"/profile/" + u.id}>
-                    <img
-                      src={u.photos.small != null ? u.photos.small : userPhoto}
-                      className={classes.userPhoto}
-                    /></NavLink>
-                </div>
-                <div>
-                  {u.followed ? (
-                    <button
-                      disabled={props.isDisabled.some((id) => id === u.id)}
-                      onClick={() => {
-                     
-                        props.unfollow(u.id)
-                      }}
-                    >
-                      Отписаться
-                    </button>
-                  ) : (
-                    <button
-                      disabled={props.isDisabled.some((id) => id === u.id)}
-                      onClick={() => {
-                    
-                        props.follow(u.id)
-                      }}
-                    >
-                      Подписаться
-                    </button>
-                  )}
-                </div>
-              </div>
-              <div className={classes.middle_container}>
-                <div className={classes.fullName}>{u.name}</div>
-                <div>{u.status}</div>
-              </div>
-              <div className={classes.right_container}>
-                {/* <div>{u.location.country}</div>
-                  <div>{u.location.city}</div> */}
-              </div>
-            </div>
-          </div>
+          <User
+            user={u}
+            isDisabled={props.isDisabled}
+            key={u.id}
+            unfollow={props.unfollow}
+            follow={props.follow}
+          />
         );
       })}
       <div>
-        {pages.map((p) => {
+       {/*  {pages.map((p) => {
           return (
             <span
               key={p}
-              className={props.currentPage === p ? classes.selectedPage : null}
+              className={currentPage === p ? classes.selectedPage : null}
               onClick={(e) => {
-                props.onPageChanged(p);
+                onPageChanged(p);
               }}
             >
               {p}
             </span>
           );
-        })}
+        })} */}
       </div>
     </div>
   );

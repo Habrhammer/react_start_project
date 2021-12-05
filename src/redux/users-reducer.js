@@ -120,40 +120,35 @@ export function toggleIsDisabled(isDisabled, userId) {
   };
 }
 
-export function requestUsers(page, pageSize) {
-  return (dispatch) => {
-    dispatch(toggleIsFetching(true));
-    dispatch(setCurrentPage(page))
-    usersAPI.getUsers(page, pageSize).then((data) => {
+export const requestUsers = (page, pageSize) => {
+  return async (dispatch) => {
+      dispatch(toggleIsFetching(true));
+      dispatch(setCurrentPage(page));
+
+      let data = await usersAPI.getUsers(page, pageSize);
       dispatch(toggleIsFetching(false));
       dispatch(setUsers(data.items));
       dispatch(setTotalUsersCount(data.totalCount));
-    });
-  };
+  }
 }
 
-export function follow(userId) {
+const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
+  dispatch(toggleIsDisabled(true, userId));
+  let response = await apiMethod(userId);
 
-  return (dispatch) => {
-    dispatch(toggleIsDisabled(true, userId));
-    usersAPI.follow(userId)
-      .then((response) => {
-        if (response.data.resultCode === 0) {
-          dispatch(followSuccess(userId));
-        }
-        dispatch(toggleIsDisabled(false, userId));
-      });
-  };
+  if (response.data.resultCode == 0) {
+      dispatch(actionCreator(userId));
+  }
+  dispatch(toggleIsDisabled(false, userId));
 }
 
-export function unfollow(userId) {
-  return (dispatch) => {
-    dispatch(toggleIsDisabled(true, userId));
-    usersAPI.unfollow(userId).then((response) => {
-      if (response.data.resultCode === 0) {
-        dispatch(unfollowSuccess(userId));
-      }
-      dispatch(toggleIsDisabled(false, userId));
-    });
-  };
+export const follow = (userId) => {
+  return async (dispatch) => {
+      followUnfollowFlow(dispatch, userId, usersAPI.follow.bind(usersAPI), followSuccess);
+  }
+}
+export const unfollow = (userId) => {
+  return async (dispatch) => {
+      followUnfollowFlow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccess);
+  }
 }

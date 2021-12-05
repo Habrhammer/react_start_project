@@ -3,11 +3,11 @@ import classes from "./ProfileInfo.module.css";
 import screenImage from "./../../../assets/images/screen.jpg";
 import userPhoto from "./../../../assets/images/user.png";
 import Preloader from "../../common/Preloader/Preloader";
-import ProfileStatus from "../ProfileStatus/ProfileStatus";
+// import ProfileStatus from "../ProfileStatus/ProfileStatus";
 import ProfileStatusWithHooks from "../ProfileStatus/ProfileStatusWithHooks";
 
-function ProfileInfo(props) {
-  if (!props.profile) {
+function ProfileInfo({profile, status, updateStatus}) {
+  if (!profile) {
     return <Preloader />;
   }
   return (
@@ -18,13 +18,13 @@ function ProfileInfo(props) {
       <div className={classes.avatar}>
         <img
           src={
-            props.profile.photos.large != null
-              ? props.profile.photos.large
+            profile.photos.large != null
+              ? profile.photos.large
               : userPhoto
           }
         />
       </div>
-     <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+     <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
     </div>
   );
 }
