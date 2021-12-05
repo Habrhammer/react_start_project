@@ -1,5 +1,5 @@
 import React from "react";
-import Friends from "./Friends/Friends";
+// import Friends from "./Friends/Friends";
 import Menu from "./Menu/Menu";
 import classes from "./Sidebar.module.css";
 

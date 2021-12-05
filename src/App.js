@@ -28,7 +28,7 @@ class App extends React.Component {
         <Sidebar />
 
         <Route
-          path="/dialogs"
+          path="/dialogs/:userId?"
           render={() => {
             return <DialogsContainer />;
           }}
@@ -61,6 +61,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default compose(
-  withRouter,
+  // withRouter,
   connect(mapStateToProps, { initializeApp })
 )(App);

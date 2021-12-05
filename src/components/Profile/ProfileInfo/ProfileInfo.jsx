@@ -4,6 +4,7 @@ import screenImage from "./../../../assets/images/screen.jpg";
 import userPhoto from "./../../../assets/images/user.png";
 import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatus from "../ProfileStatus/ProfileStatus";
+import ProfileStatusWithHooks from "../ProfileStatus/ProfileStatusWithHooks";
 
 function ProfileInfo(props) {
   if (!props.profile) {
@@ -23,7 +24,7 @@ function ProfileInfo(props) {
           }
         />
       </div>
-     <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+     <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
     </div>
   );
 }

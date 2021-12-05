@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import classes from "./Friends.module.css";
+import classes from "./UserDialog.module.css";
 
-function Friends(props){
+function UserDialog(props){
 
 let state = props.store.getState()
 
@@ -21,4 +21,4 @@ let state = props.store.getState()
    );
 }
 
-export default Friends;
+export default UserDialog;

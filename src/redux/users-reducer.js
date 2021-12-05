@@ -14,7 +14,6 @@ let initialState = {
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: false,
-  // isDisabled: false,
   isDisabled: [],
 };
 
@@ -64,7 +63,7 @@ export function usersReducer(state = initialState, action) {
         ...state,
         isDisabled: action.isDisabled
           ? [action.userId]
-          : state.isDisabled.filter((id) => id != action.userId),
+          : state.isDisabled.filter((id) => id !== action.userId),
       };
     }
 
@@ -121,10 +120,11 @@ export function toggleIsDisabled(isDisabled, userId) {
   };
 }
 
-export function getUsers(currentPage, pageSize) {
+export function requestUsers(page, pageSize) {
   return (dispatch) => {
     dispatch(toggleIsFetching(true));
-    usersAPI.getUsers(currentPage, pageSize).then((data) => {
+    dispatch(setCurrentPage(page))
+    usersAPI.getUsers(page, pageSize).then((data) => {
       dispatch(toggleIsFetching(false));
       dispatch(setUsers(data.items));
       dispatch(setTotalUsersCount(data.totalCount));
@@ -138,7 +138,7 @@ export function follow(userId) {
     dispatch(toggleIsDisabled(true, userId));
     usersAPI.follow(userId)
       .then((response) => {
-        if (response.data.resultCode == 0) {
+        if (response.data.resultCode === 0) {
           dispatch(followSuccess(userId));
         }
         dispatch(toggleIsDisabled(false, userId));
@@ -150,7 +150,7 @@ export function unfollow(userId) {
   return (dispatch) => {
     dispatch(toggleIsDisabled(true, userId));
     usersAPI.unfollow(userId).then((response) => {
-      if (response.data.resultCode == 0) {
+      if (response.data.resultCode === 0) {
         dispatch(unfollowSuccess(userId));
       }
       dispatch(toggleIsDisabled(false, userId));
