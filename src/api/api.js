@@ -9,8 +9,7 @@ const instance = axios.create({
     /*  for Ragnar */
     // "API-KEY": "4a06c3f2-eb90-454d-bb47-76d0c90aa4d5",
     /* for Ted */
-    // "API-KEY": "52dc9927-38c6-41b9-88a2-c67e34ff2563", 
-
+    // "API-KEY": "52dc9927-38c6-41b9-88a2-c67e34ff2563",
   },
 });
 
@@ -46,6 +45,20 @@ export const profileAPI = {
   updateStatus(status) {
     return instance.put(`profile/status`, { status: status });
   },
+  savePhoto(photoFile) {
+    const formData = new FormData();
+    formData.append("image", photoFile);
+
+    return instance.put(`profile/photo`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  },
+  saveProfile(profile) {
+    return instance.put(`profile`, profile );
+}
+
 };
 
 export const authAPI = {
@@ -64,7 +77,7 @@ export const dialogsAPI = {
   getDialogs() {
     return instance.get(`dialogs`);
   },
-  getListMessages(userId){
+  getListMessages(userId) {
     return instance.get(`dialogs/${userId}/messages`);
   },
   sendMessage(userId, body) {
@@ -77,7 +90,7 @@ export const dialogsAPI = {
 // await fetch('https://social-network.samuraijs.com/api/1.0/dialogs/20836/messages', {
 //   method: 'POST',
 //   headers: {
-  // 'X-API-KEY': 'apikey',
+// 'X-API-KEY': 'apikey',
 
 //     'Content-Type': 'application/json;charset=utf-8'
 //   },

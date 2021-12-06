@@ -30,26 +30,10 @@ function MyPosts(props) {
     props.addPost(values.newPostText);
   };
 
-  function onPostChange() {
-    let text = newPostElement.current.value;
-    props.updateNewPostText(text);
-  }
-
   return (
     <div>
       <h3>My posts</h3>
-      {/* <div>
-        <div>
-          <textarea
-            cols="100"
-            rows="5"
-            onChange={onPostChange}
-            ref={newPostElement}
-            value={props.newPostText}
-          ></textarea>
-        </div>
-        <button onClick={onAddPost}>Add post</button>
-      </div> */}
+ 
       <AddNewPostFormRedux onSubmit={onAddPost} />
       <div className={classes.posts}>
         {props.posts.map((el) => {
