@@ -1,36 +1,44 @@
+.image_container {
+   display: flex;
+   justify-content: center;
+}
+
 .userPhoto {
-   width: 75px;
-   border-radius: 50%;
+   width: 160px;
+   height: 160px;
+   border-radius: 3px;
+   object-fit: cover;
 }
 
 .info {
    display: flex;
 }
 
-.wrapper {
-   margin: 10px 0;
+.user_wrapper {
+   margin: 0px 0 20px;
+   flex: 0 1 33.333%;
 }
 
 .content {
+   grid-area: c;
    padding: 10px 20px;
    display: flex;
-   align-items: center;
-   border: 3px solid #13CE66;
+   flex-wrap: wrap;
+   background-color: #fff;
+
 }
 
 .left_container {
    display: flex;
    flex-direction: column;
-   align-items: center;
-   padding: 0 20px;
+   padding: 0 20px 10px;
 }
 
 .left_container button {
-   border: 1px solid #13CE66;
-   background-color: #13CE66;
-   color: #fff;
+   background-color: #E5EBF1;
+   color: #55677D;
    padding: 10px 20px;
-   font-size: 18px;
+   font-size: 13px;
    min-width: 120px;
 
 }
@@ -47,6 +55,12 @@
 
 .middle_container {
    flex: 1 1 100%;
+   text-align: center;
+   margin-bottom: 10px;
+}
+
+.button_container {
+   text-align: center;
 }
 
 .right_container {
@@ -59,4 +73,3 @@
    font-weight: bold;
    background-color: #0b9248;
 }
-

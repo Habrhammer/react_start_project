@@ -38,12 +38,13 @@ export function profileReducer(state = initialState, action) {
       return {
         ...state,
         posts: [
-          ...state.posts,
           {
             id: Date.now(),
             message: action.newPostText,
             likesCount: 0,
           },
+          ...state.posts,
+        
         ],
         newPostText: "",
       };

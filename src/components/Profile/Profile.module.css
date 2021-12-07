@@ -1,16 +1,16 @@
-.content{
+.content {
    grid-area: c;
    color: #47525E;
- }
+   display: grid;
+   grid-gap: 15px;
+}
+
+.image_wrapper>.img {
+
+   object-fit: cover;
+   width: 100%;
+   height: 180px;
 
 
 
- .image_wrapper>.img {
- 
-    object-fit: cover;
-    width: 100%;
-    height: 180px;
-  
-
-
- }
+}

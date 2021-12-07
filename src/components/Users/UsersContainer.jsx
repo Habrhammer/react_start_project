@@ -16,7 +16,6 @@ import { getCurrentPage, getIsDisabled, getIsFetching, getPageSize, getTotalUser
 class UsersContainer extends React.Component {
  
   componentDidMount() {
-    console.log(this.props);
     this.props.getUsers(this.props.currentPage, this.props.pageSize);
   }
 

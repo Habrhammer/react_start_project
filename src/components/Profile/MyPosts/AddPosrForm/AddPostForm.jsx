@@ -1,5 +1,5 @@
 import React from 'react';
-import s from '../MyPosts.module.css';
+import classes from '../AddPostForm.module.css';
 import {Field, reduxForm} from "redux-form";
 
 const AddPostForm = (props) => {
@@ -8,8 +8,8 @@ const AddPostForm = (props) => {
                 <div>
                     <Field component={"textarea"} name="postText"/>
                 </div>
-                <div>
-                    <button>Add post</button>
+                <div className={classes.button_container}>
+                    <button >Добавить запись</button>
                 </div>
             </form>
     )

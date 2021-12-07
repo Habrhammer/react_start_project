@@ -3,7 +3,47 @@
    color: #47525E;
 }
 
+.posts{
+   display: grid;
+   grid-gap: 15px;
+}
+.posts_container {
+   /* background-color: #fff; */
+   display: grid;
+   grid-gap: 15px;
+}
 
+.input_container {
+   width: 100%;
+}
+
+.input_container textarea {
+   width: 100%;
+   min-height: 80px;
+   border: none;
+   padding: 15px 20px;
+   resize: none;
+}
+.button_container {
+   display: flex;
+   justify-content: flex-end;
+   border-top: 1px solid #dce1e6;
+padding: 13px 20px 12px;
+background-color: #fff;
+}
+
+.button_container button {
+   background-color: #E5EBF1;
+   text-align: center;
+   min-height: 30px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 3px;
+   line-height: 30px;
+   cursor: pointer;
+   color: #47525E;
+}
 
 .image_wrapper>.img {
 

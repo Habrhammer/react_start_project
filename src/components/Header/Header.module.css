@@ -1,11 +1,30 @@
-.header{
-   grid-area: h;
-   background-color: #13CE66;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
- }
- .header > img{
-   width: 60px;
- }
+.header {
+  grid-area: h;
+  background-color: #fff;
+  position: fixed;
+  height: 48px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 120;
+  
+}
 
+.header_wrapper{
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: inherit;
+}
+
+.header>img {
+  width: 60px;
+}
+
+.logo{
+  font-size: 20px;
+  flex: 0 1 160px;
+  text-align: center;
+}

@@ -3,20 +3,27 @@ import classes from "./Users.module.css";
 import Paginator from "../common/Paginator/Paginator";
 import User from "./User";
 
-function Users({currentPage, totalUsersCount, pageSize, onPageChanged, users, ...props}) {
-/*   let pagesCount = Math.ceil(totalUsersCount / pageSize);
+function Users({
+  currentPage,
+  totalUsersCount,
+  pageSize,
+  onPageChanged,
+  users,
+  ...props
+}) {
+  /*   let pagesCount = Math.ceil(totalUsersCount / pageSize);
   let pages = [];
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   } */
   return (
-    <div>
-
-<Paginator currentPage={currentPage} onPageChanged={onPageChanged}
-                   totalItemsCount={totalUsersCount} pageSize={pageSize}/>
-
-
-
+    <div className={classes.content}>
+      <Paginator
+        currentPage={currentPage}
+        onPageChanged={onPageChanged}
+        totalItemsCount={totalUsersCount}
+        pageSize={pageSize}
+      />
 
       {users.map((u) => {
         return (
@@ -30,7 +37,7 @@ function Users({currentPage, totalUsersCount, pageSize, onPageChanged, users, ..
         );
       })}
       <div>
-       {/*  {pages.map((p) => {
+        {/*  {pages.map((p) => {
           return (
             <span
               key={p}

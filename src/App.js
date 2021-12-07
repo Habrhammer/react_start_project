@@ -1,6 +1,12 @@
 import React from "react";
 import Sidebar from "./components/Sidebar/Sidebar";
-import { BrowserRouter, Route, withRouter } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  withRouter,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import "./App.css";
 // import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
@@ -11,15 +17,30 @@ import Preloader from "./components/common/Preloader/Preloader";
 import { connect, Provider } from "react-redux";
 import { compose } from "redux";
 import { initializeApp } from "./redux/app-reducer";
-import {withSuspense} from "./hoc/withSuspense";
+import { withSuspense } from "./hoc/withSuspense";
 import store from "./redux/redux-store";
 
-const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
-const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
+const DialogsContainer = React.lazy(() =>
+  import("./components/Dialogs/DialogsContainer")
+);
+const ProfileContainer = React.lazy(() =>
+  import("./components/Profile/ProfileContainer")
+);
 
 class App extends React.Component {
+  catchAllUnhandledErrors = (reason, promise) => {
+    console.log("Some error occured");
+    //console.error(promiseRejectionEvent);
+  };
   componentDidMount() {
     this.props.initializeApp();
+    window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
+  }
+  componentWillUnmount() {
+    window.removeEventListener(
+      "unhandledrejection",
+      this.catchAllUnhandledErrors
+    );
   }
 
   render() {
@@ -30,16 +51,15 @@ class App extends React.Component {
       <div className="app-wrapper">
         <HeaderContainer />
         <Sidebar />
-
+        <Switch>
+        <Route exact path="/" render={() => <Redirect to={"/profile"} />} />
         <Route
           path="/dialogs/:userId?"
-          render={withSuspense(DialogsContainer)
-          }
+          render={withSuspense(DialogsContainer)}
         />
         <Route
           path="/profile/:userId?"
-          render={withSuspense(ProfileContainer)
-          }
+          render={withSuspense(ProfileContainer)}
         />
         <Route
           path="/users"
@@ -53,6 +73,8 @@ class App extends React.Component {
             return <LoginPage />;
           }}
         />
+        <Route path="*" render={() => <div>404 NOT FOUND</div>} />
+        </Switch>
       </div>
     );
   }
@@ -62,19 +84,19 @@ const mapStateToProps = (state) => ({
   initialized: state.app.initialized,
 });
 
-
 let AppContainer = compose(
   withRouter,
-  connect(mapStateToProps, {initializeApp}))(App);
-
-
+  connect(mapStateToProps, { initializeApp })
+)(App);
 
 const SocialNetworkApp = (props) => {
-  return <BrowserRouter>
-       <Provider store={store}>
-           <AppContainer />
-       </Provider>
-   </BrowserRouter>
-}
+  return (
+    <BrowserRouter>
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    </BrowserRouter>
+  );
+};
 
 export default SocialNetworkApp;

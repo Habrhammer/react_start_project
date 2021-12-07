@@ -1,3 +1,42 @@
+
+
+
+.info_wrapper {
+   /* background-color: #fff; */
+   display: flex;
+   grid-gap: 15px;
+}
+
+.avatar {
+   display: flex;
+   flex-direction: column;
+   padding: 15px 15px 15px 15px;
+   flex: 1 0 230px;
+   background-color: #fff;
+   border-radius: 3px;
+}
+
+.avatar input[type="file"] {
+   display: none;
+}
+
+.file_upload {
+   text-align: center;
+   margin-top: 10px;
+}
+
+.file_upload span {
+   background-color: #E5EBF1;
+   text-align: center;
+   min-height: 30px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 3px;
+   line-height: 30px;
+   cursor: pointer;
+}
+
 .image_wrapper>.img {
    object-fit: cover;
    width: 100%;
@@ -7,4 +46,69 @@
 .avatar>img {
    object-fit: cover;
    width: 200px;
+}
+
+
+.wrapper {
+   padding: 15px 20px;
+   width: 100%;
+   background-color: #fff;
+   border-radius: 3px;
+}
+
+.info {
+ 
+}
+
+.profile_name h1 {
+   font-size: 19px;
+   line-height: 25px;
+   font-weight: 400;
+}
+
+.profile_info_full{
+   padding-top: 24px;
+}
+
+
+.profile_info_block {
+   border-top: 1px solid #47525E;
+   padding: 0 0 29px;
+}
+
+.profile_info_header {
+   border-bottom: none;
+   margin: -11px 0 4px;
+
+}
+
+.profile_info_header h2{
+   font-weight: 400;
+   padding-right: 7px;
+   font-size: 13px;
+   display: inline;
+     background-color: #fff;
+}
+
+
+.button_edit {
+   display: flex;
+   justify-content: center;
+}
+
+.button_edit button, .editMode_button button {
+   background-color: #E5EBF1;
+   text-align: center;
+   min-height: 30px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 3px;
+   line-height: 30px;
+   cursor: pointer;
+   color: #47525E;
+}
+
+.editMode_button button {
+   margin-top: 10px;
 }

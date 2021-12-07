@@ -57,8 +57,6 @@ export function usersReducer(state = initialState, action) {
       return { ...state, isFetching: action.isFetching };
     }
     case TOGGLE_IS_DISABLED: {
-      console.log(state.isDisabled);
-
       return {
         ...state,
         isDisabled: action.isDisabled
