@@ -1,29 +1,22 @@
 import React from "react";
 import classes from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem.jsx";
-import Message from "./Message/Message.jsx";
-import {Redirect} from "react-router-dom";
-// import { useParams } from "react-router";
-import {Field, reduxForm} from "redux-form";
-import AddMessageForm from "./AddMessageForm/AddMessageForm";
+import { Redirect, Route, Router } from "react-router-dom";
 
 
 function Dialogs(props) {
- 
   let state = props.dialogsPage;
-  let currentUserId = props.match.params.userId
-
+  let currentUserId = props.match.params.userId;
   function addNewMessage(values) {
-    props.sendMessage(currentUserId,values);
+    props.sendMessage(currentUserId, values);
   }
 
-  if (!props.isAuth) return <Redirect to={"/login"} /> ;
-  
+  if (!props.isAuth) return <Redirect to={"/login"} />;
+
   return (
     <div className={classes.dialogs}>
       <div className={classes["dialog-items"]}>
         {state.dialogs.map((el) => {
-        
           return (
             <DialogItem
               getUserMessages={props.getUserMessages}
@@ -35,19 +28,9 @@ function Dialogs(props) {
           );
         })}
       </div>
-      <div className={classes.messages}>
-        {state.messages.map((el) => {
-          console.log(el);
-          return <Message senderName={el.senderName} message={el.body} key={el.id} />;
-        })}
-        <div>
-          <AddMessageForm onSubmit={addNewMessage} />
-        </div>
-      </div>
     </div>
   );
 }
-
 
 
 

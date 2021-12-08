@@ -5,11 +5,11 @@ const instance = axios.create({
   baseURL: "https://social-network.samuraijs.com/api/1.0/",
   headers: {
     /* for Fred */
-    // "API-KEY": "1cd170be-dd79-4dae-bcfd-ad4b8a3bfafd",
+    "API-KEY": "1cd170be-dd79-4dae-bcfd-ad4b8a3bfafd",
     /*  for Ragnar */
     // "API-KEY": "4a06c3f2-eb90-454d-bb47-76d0c90aa4d5",
     /* for Ted */
-    "API-KEY": "52dc9927-38c6-41b9-88a2-c67e34ff2563",
+    // "API-KEY": "52dc9927-38c6-41b9-88a2-c67e34ff2563",
   },
 });
 
