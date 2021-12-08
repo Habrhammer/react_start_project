@@ -37,19 +37,6 @@ function Users({
         );
       })}
       <div>
-        {/*  {pages.map((p) => {
-          return (
-            <span
-              key={p}
-              className={currentPage === p ? classes.selectedPage : null}
-              onClick={(e) => {
-                onPageChanged(p);
-              }}
-            >
-              {p}
-            </span>
-          );
-        })} */}
       </div>
     </div>
   );

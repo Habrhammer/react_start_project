@@ -4,31 +4,19 @@ const SEND_MESSAGE = "SEND-MESSAGE";
 const SET_MESSAGES = "SET_MESSAGES";
 const SET_DIALOGS = "SET_DIALOGS";
 
-
 let initialState = {
-  dialogs: [
-    {
-      id: 1,
-      name: "John",
-      avatar:
-        "https://images.generated.photos/REFe5-foHQv2xx1RBHm9JqaoRoNHraztJAQFEuWNCLQ/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NzIwNDc4LmpwZw.jpg",
-    },
- 
-  ],
-  messages: [
-  
-
-  ],
+  dialogs: [],
+  messages: [],
   // newMessageText: "New message...",
 };
 
 export function dialogsReducer(state = initialState, action) {
   switch (action.type) {
-    case SET_MESSAGES:{
+    case SET_MESSAGES: {
       return {
         ...state,
-        messages: action.messages
-      }
+        messages: action.messages,
+      };
     }
     case SEND_MESSAGE: {
       return {
@@ -36,18 +24,16 @@ export function dialogsReducer(state = initialState, action) {
         messages: [
           ...state.messages,
           {
-            
             body: action.newMessageText,
           },
         ],
-       
       };
     }
     case SET_DIALOGS: {
       return {
         ...state,
-        dialogs: action.dialogs
-      }
+        dialogs: action.dialogs,
+      };
     }
 
     default:
@@ -55,29 +41,26 @@ export function dialogsReducer(state = initialState, action) {
   }
 }
 
-
 export function sendMessageCreator(newMessageText) {
   return {
     type: SEND_MESSAGE,
-    newMessageText
+    newMessageText,
   };
 }
 
-export function setMessagesCreator(messages){
+export function setMessagesCreator(messages) {
   return {
     type: SET_MESSAGES,
-    messages
-  }
+    messages,
+  };
 }
 
-export function setDialogsCreator(dialogs){
+export function setDialogsCreator(dialogs) {
   return {
     type: SET_DIALOGS,
-    dialogs
-  }
+    dialogs,
+  };
 }
-
-
 
 export function requestUserMessages(userId) {
   return (dispatch) => {
@@ -89,24 +72,20 @@ export function requestUserMessages(userId) {
   };
 }
 
-export function sendMessageHOC(userId, body){
-  return (dispatch)=>{
-    dialogsAPI.sendMessage(userId, body).then((response)=>{
-    console.log(response);
-        dispatch(sendMessageCreator(response.data.data.message.body))
-    
-      
-    })
-  }
+export function sendMessageHOC(userId, body) {
+  return (dispatch) => {
+    dialogsAPI.sendMessage(userId, body).then((response) => {
+      console.log(response);
+      dispatch(sendMessageCreator(response.data.data.message.body));
+    });
+  };
 }
 
-
-
-export function getDialogItems(){
-  return (dispatch=>{
-    return dialogsAPI.getDialogs().then((response)=>{
+export function getDialogItems() {
+  return (dispatch) => {
+    return dialogsAPI.getDialogs().then((response) => {
       console.log(response);
-      dispatch(setDialogsCreator(response.data))
-    })
-  })
+      dispatch(setDialogsCreator(response.data));
+    });
+  };
 }

@@ -1,0 +1,13 @@
+.content {
+   background-color: #fff;
+   grid-area: c;
+   border-radius: 3px;
+}
+
+.form_wrapper {
+   position: sticky;
+   /* width: 100%; */
+   left: 0;
+   right: 0;
+   bottom: 0;
+}

@@ -1,18 +1,30 @@
 import React from "react";
 import classes from "./Message.module.css";
-
-
+import avatar from "../../../assets/images/avatar.webp";
 function Message(props) {
-   return (
-     <div className={classes.message}>
-       <b>{props.senderName}</b>
-       <img
-         src={"https://kuda-mo.ru/image/510/510/uploads/bdd625509a79d3b1cebf93eaceea0029.jpeg"}
-         alt=""
-       />
-       {props.message}
-     </div>
-   );
- }
+  console.log(props);
+  let date = new Date(props.addedAt).toLocaleString("ru", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  });
+  return (
+    <div className={classes.message}>
+      <div className={classes.message_content}>
+        <div className={classes.image_container}>
+          <img src={avatar} alt="" />
+        </div>
+        <div className={classes.message_info}>
+          <div className={classes.username}>{props.senderName}</div>
+          <div className={classes.date}>{date}</div>
+          <div className={classes.text}>{props.message}</div>
+        </div>
+        
+      </div>
+    </div>
+  );
+}
 
- export default Message;
+export default Message;

@@ -7,17 +7,17 @@ function Menu(props) {
     <ul className={classes.menu}>
       <li className={classes.item}>
         <NavLink to="/profile" activeClassName={classes.active}>
-          Profile
+          Моя страница
         </NavLink>
       </li>
       <li className={classes.item}>
         <NavLink to="/dialogs" activeClassName={classes.active}>
-          Message
+          Мессенджер
         </NavLink>
       </li>
       <li className={classes.item}>
         <NavLink to="/users" activeClassName={classes.active}>
-          Users
+          Пользователи
         </NavLink>
       </li>
     </ul>

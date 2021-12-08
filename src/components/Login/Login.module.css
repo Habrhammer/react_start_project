@@ -1,0 +1,46 @@
+.content {
+   grid-area: c;
+   background-color: #fff;
+   border-radius: 3px;
+   padding: 25px;
+}
+
+.login_container {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+
+.login_container input:not(input[type="checkbox"]) {
+   padding: 5px 9px 7px;
+   border-radius: 3px;
+   border: 1px solid #dce1e6;
+}
+
+.content input:not(input[type="checkbox"]) {
+   margin-bottom: 15px;
+}
+
+.content h1 {
+   margin-bottom: 15px;
+}
+
+.button_container {
+   margin-top: 15px;
+}
+
+.button_container button {
+   background-color: #E5EBF1;
+   text-align: center;
+   width: 100%;
+   min-height: 30px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 3px;
+   line-height: 30px;
+   cursor: pointer;
+   color: #47525E;
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import classes from "../AddMessageForm/AddMessageForm.module.css";
 // import {Field, reduxForm} from "redux-form";
 // import {Textarea} from "../../common/FormsControls/FormsControls";
 // import {maxLengthCreator, required} from "../../../utils/validators/validators";
@@ -29,8 +30,11 @@ const AddMessageForm = (props) => {
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
       {(formik) => (
         <Form>
-          <Textarea control="textarea" name="message" formik={formik} />
-          <button type="submit">Отправить</button>
+          <div className={classes.input_container}>
+            <Textarea placeholder="Напишите сообщение..." control="textarea" name="message" formik={formik} />
+          </div>
+
+          <div className={classes.button_container}><button type="submit">Отправить</button></div>
         </Form>
       )}
     </Formik>

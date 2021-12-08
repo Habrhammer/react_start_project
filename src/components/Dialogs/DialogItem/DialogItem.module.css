@@ -1,36 +1,36 @@
 
 .dialog {
-   padding: 0 25px 0;
-   margin: 10px 0;
-   position: relative;
    display: flex;
    align-items: center;
-   font-size: 25px;
+   font-size: 13px;
    cursor: pointer;
-   transition: color 0.3s ease 0s;
-   color: #8190A5;
 }
 
-
-
-.dialog:hover{
-   color: #2f343b;
-   
+.dialog_wrapper {
+   border-top: 1px solid #dce1e6;
+}
+.dialog_content {
+   padding: 10px 20px;
 }
 
-.dialog::before {
-   position: absolute;
-   content: "";
-   left: 0;
-   
-   width: 10px;
-   height: 10px;
-   border-radius: 50%;
-   background-color: #8190A5;
+.dialog_info {
+   display: flex;
+   align-items: center;
+   width: 100%;
 }
 
-.dialog>img{
+.dialog_info .username {
+   flex: 1 1 100%;
+}
+
+.dialog_info .activitydate{
+   white-space: nowrap;
+   color: #818c99;;
+}
+
+.dialog_info img{
+ 
    width: 50px;
    border-radius: 50%;
-   margin-right: 10px;
+   margin-right: 14px;
 }

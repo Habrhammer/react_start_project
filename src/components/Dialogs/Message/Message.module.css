@@ -13,3 +13,37 @@
    border-radius: 50%;
    width: 45px;
 }
+
+.message_content {
+   display: flex;
+   width: 100%;
+}
+
+.image_container{
+   
+}
+
+.message_info {
+   
+}
+
+.username {
+   display: inline-flex;
+   color: #2a5885;
+   font-weight: bold;
+   margin-right: 25px;
+}
+
+.date {
+   display: inline-flex;
+   color: #818c99;
+}
+
+.text {
+   margin-top:8px;
+}
+
+
+
+
+

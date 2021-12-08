@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 function User({ user, isDisabled, unfollow, follow }) {
   return (
     <div className={classes.user_wrapper} key={user.id}>
-      <div className={classes.user_container}>
+
         <div className={classes.left_container}>
           <div className={classes.image_container}>
             <NavLink to={"/profile/" + user.id}>
@@ -44,11 +44,8 @@ function User({ user, isDisabled, unfollow, follow }) {
           </div>
         </div>
      
-        <div className={classes.right_container}>
-          {/* <div>{user.location.country}</div>
-              <div>{user.location.city}</div> */}
-        </div>
-      </div>
+        
+      
     </div>
   );
 }
