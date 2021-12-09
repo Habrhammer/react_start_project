@@ -29,7 +29,12 @@ const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
         />
       </div>
       <div className={classes.checkbox}>
-        <Field component={Input} name={"rememberMe"} text="Запомнить меня" type={"checkbox"} />
+        <Field
+          component={Input}
+          name={"rememberMe"}
+          text="Запомнить меня"
+          type={"checkbox"}
+        />
       </div>
 
       {captchaUrl && <img src={captchaUrl} />}
@@ -55,6 +60,12 @@ const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
 const LoginReduxForm = reduxForm({ form: "login" })(LoginForm);
 
 const Login = (props) => {
+  var divStyle = {
+    display: "flex",
+    flexDirection: "column",
+    marginTop: "40px",
+  };
+
   const onSubmit = (formData) => {
     props.login(
       formData.email,
@@ -73,6 +84,18 @@ const Login = (props) => {
       <div className={classes.login_container}>
         <h1>Авторизация</h1>
         <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
+
+        <div style={divStyle}>
+          <div style={{ fontWeight: "bold", marginBottom: "15px", fontSize: "15px" }}>
+            Данные тестового аккаунта:
+          </div>
+          <div style={{fontStyle: "italic",userSelect: "none"}}>Email:{" "}</div>
+          <pre style={{ backgroundColor: "#E5EBF1", padding: "5px",margin: "5px 0" }}>
+            free@samuraijs.com
+          </pre>{" "}
+          <div style={{fontStyle: "italic", userSelect: "none"}}>Password:{" "}</div>
+          <pre style={{ backgroundColor: "#E5EBF1", padding: "5px" ,margin: "5px 0"}}>free</pre>
+        </div>
       </div>
     </div>
   );

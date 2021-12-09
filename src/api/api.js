@@ -4,12 +4,7 @@ const instance = axios.create({
   withCredentials: true,
   baseURL: "https://social-network.samuraijs.com/api/1.0/",
   headers: {
-    /* for Fred */
-    "API-KEY": "1cd170be-dd79-4dae-bcfd-ad4b8a3bfafd",
-    /*  for Ragnar */
-    // "API-KEY": "4a06c3f2-eb90-454d-bb47-76d0c90aa4d5",
-    /* for Ted */
-    // "API-KEY": "52dc9927-38c6-41b9-88a2-c67e34ff2563",
+    "API-KEY": "f40aecd5-e5b2-4859-9464-6cc47b663edc",
   },
 });
 
@@ -74,16 +69,21 @@ export const authAPI = {
 };
 
 export const dialogsAPI = {
+  startChatting(userId){
+    return instance.put(`dialogs/${userId}`)
+  },
+  sendMessage(userId, body) {
+    return instance.post(`dialogs/${userId}/messages`, { body: body });
+  },
   getDialogs() {
     return instance.get(`dialogs`);
   },
   getListMessages(userId) {
     return instance.get(`dialogs/${userId}/messages`);
   },
-  sendMessage(userId, body) {
-    return instance.post(`dialogs/${userId}/messages`, { body: body });
-  },
 };
+
+
 
 export const securityAPI = {
   getCaptchaUrl() {
